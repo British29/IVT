@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:vente/connexion/inscription_screen.dart';
 import 'package:vente/connexion/login_screen.dart';
 import 'package:vente/connexion/splash_screen.dart';
-import 'package:vente/contenue/button_navigation_screen.dart';
 
 void main() {
   runApp(MyApp());

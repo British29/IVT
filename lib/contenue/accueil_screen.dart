@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vente/main.dart';
 
 class AcceuilApp extends StatefulWidget {
   @override
@@ -8,6 +10,51 @@ class AcceuilApp extends StatefulWidget {
 }
 
 class _AcceuilAppState extends State<AcceuilApp> {
+  void logout() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyApp(),
+      ),
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Déconnexion'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                // Text('This is a demo alert dialog.'),
+                Text('Voulez vous vraiment vous déconnecter ?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Oui'),
+              onPressed: () {
+                logout();
+              },
+            ),
+            TextButton(
+              child: Text('Non'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +106,9 @@ class _AcceuilAppState extends State<AcceuilApp> {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Déconnexion'),
-              onTap: () {},
+              onTap: () {
+                _showMyDialog();
+              },
             ),
           ],
         ),
@@ -224,9 +273,6 @@ class _AcceuilAppState extends State<AcceuilApp> {
                   },
                 );
               }).toList(),
-            ),
-            SizedBox(
-              height: 40,
             ),
           ],
         ),

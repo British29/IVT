@@ -20,12 +20,12 @@ class _SplashPageState extends State<SplashPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 180),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.10,
-                  child: Image.asset('assets/logoaccueil.png'),
+                  height: MediaQuery.of(context).size.height * 0.20,
+                  child: Image.asset('assets/logoS.png'),
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Container(
                 child: Text(
@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: 60,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 70, left: 20, right: 20),

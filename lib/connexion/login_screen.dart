@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:hexcolor/hexcolor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vente/contenue/button_navigation_screen.dart';
 
 class ConnexionButton extends StatefulWidget {
@@ -16,6 +18,8 @@ class _ConnexionButtonState extends State<ConnexionButton> {
   TextEditingController email = TextEditingController();
   TextEditingController motDePasse = TextEditingController();
 
+  bool visible = true;
+
   Future login() async {
     var url = "http://172.27.110.225/vente_test/loginConnexion.php";
     var response = await http.post(url, body: {
@@ -25,30 +29,30 @@ class _ConnexionButtonState extends State<ConnexionButton> {
     var data = json.decode(response.body);
     if (data == "Success") {
       print('bon');
-      // Fluttertoast.showToast(
-      //     msg: "Connexion reussie",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.CENTER,
-      //     timeInSecForIosWeb: 1,
-      //     backgroundColor: Colors.green,
-      //     textColor: Colors.white,
-      //     fontSize: 16.0);
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      // builder: (context) => ButtonNavigationApp(),
-      //   ),
-      // );
+      Fluttertoast.showToast(
+          msg: "Connexion reussie",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 0,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ButtonNavigationApp(),
+        ),
+      );
     } else {
       print('echec');
-      // Fluttertoast.showToast(
-      //     msg: "Email ou mot de passe incorrect",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.CENTER,
-      //     timeInSecForIosWeb: 1,
-      //     backgroundColor: Colors.red,
-      //     textColor: Colors.white,
-      //     fontSize: 16.0);
+      Fluttertoast.showToast(
+          msg: "Email ou mot de passe incorrect",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 0,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
     }
   }
 
@@ -126,12 +130,6 @@ class _ConnexionButtonState extends State<ConnexionButton> {
                   child: RaisedButton(
                     onPressed: () {
                       login();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ButtonNavigationApp(),
-                        ),
-                      );
                     },
                     child: Text(
                       'Connexion',

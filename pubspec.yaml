@@ -31,6 +31,9 @@ dependencies:
   hexcolor: ^1.0.6
   carousel_slider: ^3.0.0
   http:
+  fluttertoast: ^7.1.6
+  shared_preferences: ^0.5.12+4
+
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +52,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/logoaccueil.png
+    - assets/logoS.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
