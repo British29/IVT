@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vente/contenue/accueil_screen.dart';
+import 'package:vente/contenue/panier_screen.dart';
 import 'package:vente/contenue/profile_screen.dart';
 
 class ButtonNavigationApp extends StatefulWidget {
@@ -10,6 +11,7 @@ class ButtonNavigationApp extends StatefulWidget {
 class _ButtonNavigationAppState extends State<ButtonNavigationApp> {
   int selectedIndex = 0;
   Widget _myAcceuilApp = AcceuilApp();
+  Widget _myPagePanier = PagePanier();
   Widget _myProfilUser = ProfilUser();
 
   @override
@@ -43,6 +45,8 @@ class _ButtonNavigationAppState extends State<ButtonNavigationApp> {
   Widget getBody() {
     if (this.selectedIndex == 0) {
       return this._myAcceuilApp;
+    } else if (this.selectedIndex == 1) {
+      return this._myPagePanier;
     } else {
       return this._myProfilUser;
     }

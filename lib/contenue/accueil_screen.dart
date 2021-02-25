@@ -10,6 +10,10 @@ class AcceuilApp extends StatefulWidget {
 }
 
 class _AcceuilAppState extends State<AcceuilApp> {
+  void initState() {
+    super.initState();
+  }
+
   void logout() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.clear();
@@ -116,6 +120,16 @@ class _AcceuilAppState extends State<AcceuilApp> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Categories',
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
             Container(
               height: MediaQuery.of(context).size.height * 0.1,
               width: MediaQuery.of(context).size.width * 0.99,
@@ -250,29 +264,6 @@ class _AcceuilAppState extends State<AcceuilApp> {
             ),
             SizedBox(
               height: 30,
-            ),
-            CarouselSlider(
-              options: CarouselOptions(height: 200.0),
-              items: [
-                'Image Plat 1',
-                'Image Plat 2',
-                'Image Plat 3',
-                'Image Plat 4',
-                'Image Plat 5',
-              ].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 3.0),
-                        decoration: BoxDecoration(color: HexColor("#00BCD4")),
-                        child: Text(
-                          'text $i',
-                          style: TextStyle(fontSize: 16.0),
-                        ));
-                  },
-                );
-              }).toList(),
             ),
           ],
         ),

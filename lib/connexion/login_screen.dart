@@ -21,13 +21,15 @@ class _ConnexionButtonState extends State<ConnexionButton> {
   bool visible = true;
 
   Future login() async {
+    SharedPreferences sharedPrefs = await SharedPreferences.getInstance();
+
     var url = "http://172.27.110.225/vente_test/loginConnexion.php";
     var response = await http.post(url, body: {
       "email": email.text,
       "password": motDePasse.text,
     });
     var data = json.decode(response.body);
-    if (data == "Success") {
+    if (response.statusCode == 200) {
       print('bon');
       Fluttertoast.showToast(
           msg: "Connexion reussie",
@@ -43,6 +45,11 @@ class _ConnexionButtonState extends State<ConnexionButton> {
           builder: (context) => ButtonNavigationApp(),
         ),
       );
+
+      sharedPrefs.setString('id', data[0]['id']);
+      sharedPrefs.setString('nomPrenom', data[0]['nom_prenom']);
+      sharedPrefs.setString('email', data[0]['email']);
+      sharedPrefs.setString('telephone', data[0]['telephone']);
     } else {
       print('echec');
       Fluttertoast.showToast(
@@ -54,6 +61,19 @@ class _ConnexionButtonState extends State<ConnexionButton> {
           textColor: Colors.white,
           fontSize: 16.0);
     }
+  }
+
+  void getdataUser() async {
+    SharedPreferences sharedPrefs = await SharedPreferences.getInstance();
+    String id = sharedPrefs.getString('id');
+    String nomPrenom = sharedPrefs.getString('nom_prenom');
+    String email = sharedPrefs.getString('email');
+    String telephone = sharedPrefs.getString('telephone');
+
+    print('id: ${id}');
+    print('nom_prenom: ${nomPrenom}');
+    print('email: ${email}');
+    print('telephone: ${telephone}');
   }
 
   @override
@@ -130,6 +150,7 @@ class _ConnexionButtonState extends State<ConnexionButton> {
                   child: RaisedButton(
                     onPressed: () {
                       login();
+                      getdataUser();
                     },
                     child: Text(
                       'Connexion',

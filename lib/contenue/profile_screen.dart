@@ -8,6 +8,10 @@ class ProfilUser extends StatefulWidget {
 }
 
 class _ProfilUserState extends State<ProfilUser> {
+  void initState() {
+    super.initState();
+  }
+
   void logout() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.clear();
@@ -65,18 +69,23 @@ class _ProfilUserState extends State<ProfilUser> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 30,
+                height: 10,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.greenAccent,
+                maxRadius: 50,
+                child: Icon(
+                  Icons.person,
+                  size: 50,
+                  color: Colors.white,
+                ),
               ),
               Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.greenAccent,
-                    maxRadius: 50,
-                    child: Icon(
-                      Icons.person,
-                      size: 50,
-                      color: Colors.white,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
                     ),
                   ),
                   Container(
@@ -97,7 +106,7 @@ class _ProfilUserState extends State<ProfilUser> {
                             height: 5,
                           ),
                           Text(
-                            'Dje Bi Odilon',
+                            'Nom',
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
@@ -116,7 +125,7 @@ class _ProfilUserState extends State<ProfilUser> {
                             ),
                             title: Center(
                               child: Text(
-                                'Odilon@gmail.com',
+                                '',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
@@ -135,7 +144,7 @@ class _ProfilUserState extends State<ProfilUser> {
                             ),
                             title: Center(
                               child: Text(
-                                'O778494985',
+                                '',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,

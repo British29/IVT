@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:hexcolor/hexcolor.dart';
+import 'package:vente/connexion/login_screen.dart';
 
 class InscriptionButton extends StatefulWidget {
   @override
@@ -33,9 +34,15 @@ class _InscriptionButtonState extends State<InscriptionButton> {
       });
       var data = json.decode(response.body);
       if (data == 200) {
-        print('bon');
-      } else {
         print('mauvais');
+      } else {
+        print('bon');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ConnexionButton(),
+          ),
+        );
       }
     }
   }
@@ -46,8 +53,8 @@ class _InscriptionButtonState extends State<InscriptionButton> {
       body: SingleChildScrollView(
         child: Center(
           child: Form(
+            key: _keyForm,
             child: Column(
-              key: _keyForm,
               children: <Widget>[
                 SizedBox(
                   height: 50,
