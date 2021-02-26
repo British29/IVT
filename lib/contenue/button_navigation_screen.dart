@@ -23,15 +23,24 @@ class _ButtonNavigationAppState extends State<ButtonNavigationApp> {
         currentIndex: this.selectedIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+              size: 32,
+            ),
             title: Text("Accueil"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Icon(
+              Icons.shopping_cart_outlined,
+              size: 32,
+            ),
             title: Text("Panier"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(
+              Icons.person,
+              size: 32,
+            ),
             title: Text("Profile"),
           )
         ],

@@ -1,8 +1,12 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vente/contenue/panier_screen.dart';
 import 'package:vente/main.dart';
+
+import 'profile_screen.dart';
 
 class AcceuilApp extends StatefulWidget {
   @override
@@ -63,6 +67,7 @@ class _AcceuilAppState extends State<AcceuilApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Center(child: Text('Accueil')),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -70,7 +75,14 @@ class _AcceuilAppState extends State<AcceuilApp> {
               color: Colors.white,
               size: 33,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PagePanier(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: Icon(
@@ -93,23 +105,93 @@ class _AcceuilAppState extends State<AcceuilApp> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home_outlined),
-              title: Text('Accueil'),
-              onTap: () {},
+              leading: Icon(
+                Icons.home_outlined,
+                size: 32,
+                color: Colors.blue,
+              ),
+              title: Text(
+                'Accueil',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.blue,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AcceuilApp(),
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: 15,
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Mes Infos'),
-              onTap: () {},
+              leading: Icon(
+                Icons.person,
+                size: 32,
+                color: Colors.blue,
+              ),
+              title: Text(
+                'Mes Infos',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.blue,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilUser(),
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: 15,
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart_outlined),
-              title: Text('Mon Panier'),
-              onTap: () {},
+              leading: Icon(
+                Icons.shopping_cart_outlined,
+                size: 32,
+                color: Colors.blue,
+              ),
+              title: Text(
+                'Mon Panier',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.blue,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PagePanier(),
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: 15,
             ),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Déconnexion'),
+              leading: Icon(
+                Icons.logout,
+                size: 32,
+                color: Colors.red,
+              ),
+              title: Text(
+                'Déconnexion',
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.red,
+                ),
+              ),
               onTap: () {
                 _showMyDialog();
               },
@@ -121,14 +203,21 @@ class _AcceuilAppState extends State<AcceuilApp> {
         child: Column(
           children: [
             SizedBox(
-              height: 10,
+              height: 5,
             ),
-            Text(
-              'Categories',
-              style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+              ],
             ),
             Container(
               height: MediaQuery.of(context).size.height * 0.1,
@@ -263,7 +352,52 @@ class _AcceuilAppState extends State<AcceuilApp> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 40,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: MediaQuery.of(context).size.width * 0.99,
+              child: Carousel(
+                images: [
+                  Image.asset('assets/burger.jpg'),
+                  Image.asset('assets/pizza.jpg'),
+                  Image.asset('assets/sandwich.jpg'),
+                  Image.asset('assets/pizza.jpg'),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Vos Commandes",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  child: Card(
+                    elevation: 8,
+                    child: ListView(
+                      
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

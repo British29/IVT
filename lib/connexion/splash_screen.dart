@@ -30,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
               Container(
                 child: Text(
                   'Manger à gogo',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 23),
                 ),
               ),
               SizedBox(

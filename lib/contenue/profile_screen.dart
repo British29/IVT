@@ -61,6 +61,7 @@ class _ProfilUserState extends State<ProfilUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Center(child: Text('Profile')),
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
