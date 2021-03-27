@@ -19,7 +19,9 @@ class _ButtonNavigationAppState extends State<ButtonNavigationApp> {
     return Scaffold(
       body: this.getBody(),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 20,
         type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.cyan,
         currentIndex: this.selectedIndex,
         items: [
           BottomNavigationBarItem(

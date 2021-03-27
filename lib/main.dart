@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vente/administrateur/homepageAdmin_screen.dart';
 import 'package:vente/connexion/inscription_screen.dart';
 import 'package:vente/connexion/login_screen.dart';
 import 'package:vente/connexion/splash_screen.dart';
+import 'package:vente/contenue/button_navigation_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +18,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Pageview(),
+      routes: <String, WidgetBuilder>{
+        '/homepageAdmin_screen': (BuildContext context) => new HomePageAdmin(),
+        '/button_navigation_screen': (BuildContext context) =>
+            new ButtonNavigationApp(),
+      },
     );
   }
 }
